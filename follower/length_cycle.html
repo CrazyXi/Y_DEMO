@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>长度转换</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<script src="../js/mui.min.js"></script>
+	</head>
+	<body>
+		<header id="header" class="mui-bar mui-bar-nav" style="background-color: #FFFFFF;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">长度转换</h1>
+		</header>
+		
+		<style>
+			#mui-input-rows{
+				margin-left: 10%;
+				width: 90%;
+				background-color:white;
+				margin: 8px 18px;
+				box-shadow: 1px 1px 5px #7f8c8d;
+				text-align: center;
+				border-radius:25px 25px 25px 25px;
+			}
+			
+			.problem input:c{
+				border-style:solid;
+				border-color: #03a9f4;
+				box-shadow: 1 1 5px #03a9f4;
+			}
+			
+			
+		</style>
+		
+		<div id="time_sg" style="margin-top: 60px;">
+			<div class="mui-input-row" id="mui-input-rows">
+				<label>纳米</label>
+				<input type="text" placeholder="" id="nanometer" v-model="nanometer">
+			</div>
+			<div class="mui-input-row" id="mui-input-rows">
+				<label>微米</label>
+				<input type="text" placeholder=""  id="micron" v-model="micron">
+			</div>
+			<div class="mui-input-row" id="mui-input-rows">
+				<label>毫米</label>
+				<input type="text" placeholder="" id="millimeter" v-model="millimeter">
+			</div>
+			<div class="mui-input-row" id="mui-input-rows">
+				<label>厘米</label>
+				<input type="text" placeholder="" id="centimeter" v-model="centimeter">
+			</div>
+			<div class="mui-input-row" id="mui-input-rows">
+				<label>分米</label>
+				<input type="text" placeholder="" id="decimetre" v-model="decimetre">
+			</div>
+			<div class="mui-input-row" id="mui-input-rows">
+				<label>米</label>
+				<input type="text" placeholder="" id="meter" v-model="meter">
+			</div>
+			<div class="mui-input-row" id="mui-input-rows">
+				<label>千米</label>
+				<input type="text" placeholder="" id="kilometer" v-model="kilometer">
+			</div>
+			<div class="mui-input-row" id="mui-input-rows">
+				<label>天文单位</label>
+				<input type="text" placeholder="" id="astronomical_unit" v-model="astronomical_unit">
+			</div>
+			<div class="mui-input-row" id="mui-input-rows">
+				<label>光年</label>
+				<input type="text" placeholder="" id="light_year" v-model="light_year">
+			</div>
+			
+		</div>
+		
+	</body>
+	<script type="text/javascript" src="../js/vue.min.js" ></script>
+	<script type="text/javascript" charset="utf-8">
+		mui.init({
+			swipeBack:true //启用右滑关闭功能
+		});
+		
+		var vm = new Vue({
+			el: '#time_sg',
+			data: {
+			   nanometer :0,
+			   micron:0,
+			   millimeter:0,
+			   centimeter:0,
+			   decimetre:0,
+			   meter:0,
+			   kilometer:0,
+			   astronomical_unit:0,
+			   light_year:0
+			},
+			watch : {
+			   nanometer:function(val) {//纳米
+				  this.nanometer = val;
+				  this.micron = this.nanometer / 1000
+				  this.millimeter = this.micron / 1000
+				  this.centimeter = this.millimeter / 10
+				  this.decimetre = this.centimeter / 10
+				  this.meter = this.decimetre / 10
+				  this.kilometer = this.meter / 1000
+				  this.astronomical_unit = this.kilometer / 149597870
+				  this.light_year = this.astronomical_unit / 63241.0770843
+				  
+			   },
+			   micron:function (val) {//微米
+				  this.micron = val;
+				  this.nanometer = this.micron * 1000
+				  this.millimeter = this.micron / 1000
+				  this.centimeter = this.millimeter / 10
+				  this.decimetre = this.centimeter / 10
+				  this.meter = this.decimetre / 10
+				  this.kilometer = this.meter / 1000
+				  this.astronomical_unit = this.kilometer / 149597870
+				  this.light_year = this.astronomical_unit / 63241.0770843
+				  
+			   },
+			   millimeter:function (val) {//毫米
+				  this.millimeter = val;
+				  this.micron = this.millimeter * 1000
+				  this.centimeter = this.millimeter / 10
+				  this.decimetre = this.centimeter / 10
+				  this.meter = this.decimetre / 10
+				  this.kilometer = this.meter / 1000
+				  this.astronomical_unit = this.kilometer / 149597870
+				  this.light_year = this.astronomical_unit / 63241.0770843
+				  
+			   },
+			   centimeter:function (val) {//厘米
+			      this.centimeter = val;
+				  this.millimeter = this.centimeter * 10
+				  this.decimetre = this.centimeter / 10
+				  this.micron = this.nanometer / 1000
+			      this.meter = this.decimetre / 10
+			      this.kilometer = this.meter / 1000
+			      this.astronomical_unit = this.kilometer / 149597870
+			      this.light_year = this.astronomical_unit / 63241.0770843
+				  
+			   },
+			   decimetre:function (val) {//分米
+			      this.decimetre = val;
+			      this.centimeter = this.decimetre * 10
+				  this.micron = this.nanometer / 1000
+				  this.millimeter = this.micron / 1000
+				  this.meter = this.decimetre / 10
+				  this.kilometer = this.meter / 1000
+			      this.astronomical_unit = this.kilometer / 149597870
+			      this.light_year = this.astronomical_unit / 63241.0770843
+				  
+			   },
+			   meter:function (val) {//米
+				  this.meter = val;
+				  this.decimetre = this.meter * 10
+				  this.centimeter = this.decimetre * 10
+				  this.micron = this.nanometer / 1000
+				  this.millimeter = this.micron / 1000
+				  this.kilometer = this.meter / 1000
+				  this.astronomical_unit = this.kilometer / 149597870
+				  this.light_year = this.astronomical_unit / 63241.0770843
+				  
+			   },
+			   kilometer:function (val) {//千米
+			   	  this.kilometer = val;
+				  this.meter = this.kilometer * 1000
+				  this.micron = this.nanometer / 1000
+				  this.millimeter = this.micron / 1000
+				  this.centimeter = this.millimeter / 10
+				  this.decimetre = this.centimeter / 10
+				  this.astronomical_unit = this.kilometer / 149597870
+				  this.light_year = this.astronomical_unit / 63241.0770843
+			   },
+			   astronomical_unit:function (val) {//天文单位
+			   	  this.astronomical_unit = val;
+				  this.kilometer = this.astronomical_unit * 149597870
+				  this.micron = this.nanometer / 1000
+				  this.millimeter = this.micron / 1000
+				  this.centimeter = this.millimeter / 10
+				  this.decimetre = this.centimeter / 10
+				  this.meter = this.decimetre / 10
+				  this.light_year = this.astronomical_unit / 63241.0770843
+				  
+			   },
+			   light_year:function (val) {//光年
+			   	  this.light_year = val;
+			   	  this.astronomical_unit = this.light_year * 63241.0770843
+				  this.kilometer = this.astronomical_unit * 149597870
+				  this.micron = this.nanometer / 1000
+				  this.millimeter = this.micron / 1000
+				  this.centimeter = this.millimeter / 10
+				  this.decimetre = this.centimeter / 10
+				  this.meter = this.decimetre / 10
+			   }
+			}
+		});
+		
+	</script>
+	
+	
+	
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>MD5加密</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<script src="../js/mui.min.js"></script>
+	</head>
+	<body>
+		<header id="header" class="mui-bar mui-bar-nav" style="background-color: #FFFFFF;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">MD5加密</h1>
+		</header>
+		
+		<div id="toppane" style="margin-top: 55px;margin-left: 10px;margin-right: 10px;">
+			<textarea id="textarea1" rows="13" cols="30" placeholder="需要被加密的数据"></textarea>
+		</div>
+		<div id="cenpane" style="height:10px;text-align: center;">
+			<button id="btne1" type="button" class="mui-btn mui-btn-primary mui-btn-outlined" style="width:150px;height: 50px; ">
+					加密
+			</button>
+		</div>
+		<div id="botpane" style="margin-top: 55px;margin-left: 10px;margin-right: 10px;">
+			<textarea id="textarea2" rows="13" cols="30" placeholder="加密后的数据"></textarea>
+		</div>
+		
+	</body>
+	
+	<script src="../js/md5.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		mui.init({
+			swipeBack:true //启用右滑关闭功能
+		});
+		
+		document.getElementById('btne1').addEventListener('tap',function(event){
+			if(document.getElementById('textarea1').value.length>0){
+				document.getElementById('textarea2').value=hex_md5(document.getElementById('textarea1').value);
+			}else{
+				mui.toast('内容不能为空',{ duration:'long', duration: 1500, type:'div' }); 
+			}
+		});
+		
+		
+	</script>
+	
+	
+	
+</html>

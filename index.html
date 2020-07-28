@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html style="background-color: #34495e;">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="misapplication-tap-highlight" content="no"/>
+    <meta name="HandheldFriendly" content="true"/>
+	<meta name="MobileOptimized" content="320"/>=
+    <title>TEST</title>
+    <script src="js/mui.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <script src="js/jquery-2.1.3.min.js"></script>
+	<script src="js/gooey.min.js"></script>
+	<link rel="stylesheet" href="css/gooey.min.css">
+	<link rel="stylesheet" href="css/livedemo.css">
+    
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav" style="margin-bottom: auto;background-color: #FFFFFF;">
+    <h1 class="mui-title" style="">Y_DEMO</h1>
+    </header>
+    
+	<div id="dt0" style="margin-top: 60px;" style="background-color:#34495e;">
+		<div class="mui-content" id='mui_content' style="background-color: #34495e;">
+			<div class="mui-card" id='mui_card' style="background-color: #34495e;">
+				<ul class="mui-table-view" style="background-color: #34495e;">
+					<li class="mui-table-view-cell mui-collapse" id="lit1" name="lit1" style="background-color: #3498db;">
+						<a class="mui-navigate-right" href="#" id="atest"><span class="mui-icon iconfont" style="color: black;">&#xe904;</span> 手机信息</a>
+						<div class="mui-collapse-content">
+							<div id="pinfou1">
+								<div id="ptest" v-html="infodata">
+									
+								</div>
+							</div>
+							
+						</div>
+					</li>
+					
+					<li class="mui-table-view-cell mui-collapse" id="lit2" name="lit2" style="background-color: #1abc9c;">
+						 <a class="mui-navigate-right" href="#" id="atest"><span class="mui-icon iconfont" style="color: black;">&#xe902;</span> 音频</a>
+						<div class="mui-collapse-content">							
+							<ul class="mui-table-view" style="text-align: center;">
+								 <li class="mui-table-view-cell" value="">0</li>
+						         <li class="mui-table-view-cell" value="" id="item2s">6300hz</li>
+						         <li class="mui-table-view-cell" value="" id="item3s">8000hz</li>
+						         <li class="mui-table-view-cell" value="" id="item4s">10000hz</li>
+						         <li class="mui-table-view-cell" value="" id="item5s">12500hz</li>
+							</ul>
+							
+							<div id="prsb" style="margin-top:50px;">
+								<div id="demo1" class="mui-text-center">
+									<p class="mui-progressbar mui-progressbar-in" id="prst1" data-progress="0" style="height: 3px;"><span></span></p>
+									 
+							        <div class="mui-input-row mui-input-range field-contain" style="text-align: right;width: 50%;height: 30%;float:right"> 							            
+						            	<label style="margin-right: 15%; padding: 11px 0px;font-size: 8px;" id="btime"></label>
+						            	<label style="text-align:left;padding: 11px 6px;width:60px;">音量：</label>
+						                <input type="range" id='field-range' style="height:5px;margin: 1px 0;transform: rotate(270deg);background-color:#1abc9c;text-align:right;width: 30%;padding-right: 0px;" value="10" min="0" max="100" />							            
+							        	<span class="mui-tooltip mui-hidden" style=""></span>
+							        </div>   
+							        
+							        <div id="musicpane" style="padding: 10px 10px;margin-top: 0;text-align: left;">
+							        	<img id="btnimgbf" src="img/img1.png" onclick="btn1();" style="width:40px;height:40px;"/>
+							        	<img id="btnimgjs" src="img/img3.png" onclick="btn2();" style="width:40px;height:40px;">
+							        	<img id="btnimgxh" src="img/img4.png" onclick="btn3();" style="width:40px;height:40px;">
+							        </div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="mui-table-view-cell mui-collapse" id="lit3" name="lit3" style="background-color: #badc58;">
+						<a class="mui-navigate-right" href="#" id="atest"><span class="mui-icon iconfont" style="color: black;">&#xe901;</span> 加密解密</a>
+						<div class="mui-collapse-content" style="padding: 5px 15px;">
+							
+							<div id="inputpaneid" style="margin-top: 200px;">
+								
+								<nav id="gooey-round" style="margin-top: 0px;padding-top: 0px;min-width:350px;min-height:350px;position:absolute;">
+									<input type="checkbox" class="menu-open" name="menu-open3" id="menu-open3"/>
+									<label class="open-button" for="menu-open3">
+										<span class="burger burger-1"></span>
+										<span class="burger burger-2"></span>
+										<span class="burger burger-3"></span>
+									</label>
+									<a href="#" id="md5_skip" class="gooey-menu-item">MD5<i class="fa fa-train"></i> </a>
+									<a href="#" id="base4_skip" class="gooey-menu-item">Base64<i class="fa fa-bicycle"></i> </a>
+									<a href="#" id="rc4_skip" class="gooey-menu-item">RC4<i class="fa fa-rocket"></i> </a>
+									<a href="#" id="rabbit_skip" class="gooey-menu-item">Rabbit<i class="fa fa-automobile"></i> </a>
+									<a href="#" id="des_skip" class="gooey-menu-item">DES<i class="fa fa-plane"></i> </a>
+								</nav>
+								
+							</div>
+						</div>		
+					</li>
+					
+					<li class="mui-table-view-cell mui-collapse" id="lit1" name="lit1" style="background-color: #f1c40f;">
+						<a class="mui-navigate-right" href="#" id="atest"><span class="mui-icon iconfont" style="color: black;">&#xe905;</span> 转换</a>
+						<div class="mui-collapse-content">
+							<div id="pinfou1">
+								<div id="ptest" v-html="infodata">
+									<button id="time_skip" style="" type="button" class="mui-btn mui-btn-primary mui-btn-outlined">
+										时间
+									</button>
+									<button id="length_skip" type="button" class="mui-btn mui-btn-primary mui-btn-outlined">
+										长度
+									</button>
+									<button id="area_skip" type="button" class="mui-btn mui-btn-primary mui-btn-outlined">
+										面积
+									</button>
+									
+									
+								</div>
+							</div>
+							
+						</div>
+					</li>
+					
+					<li class="mui-table-view-cell mui-collapse" id="lit5s" name="lit5s" style="background-color: #e67e22;">
+						<a class="" href="follower/query_eth.html" id="atest"><span class="mui-icon iconfont" style="color: black;">&#xe903;</span> 区块链</a>
+					</li>
+					
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<div id="metag" style="margin-left: 70%; width: 10%;height: 10%;position:absolute;position:fix;bottom:5px;">
+		<p id="btntag1" style="color: #2ecc71;font-size: 16px;">By:XiWood</p>
+	</div>
+	
+</body>
+<!--<script type="text/javascript" src="js/common.js"></script>-->
+<script type="text/javascript" src="js/vue.min.js" ></script>
+<script type="text/javascript" charset="utf-8">
+  	mui.init();
+//	mui.toast('Hello World',{ duration:'long', type:'div' }); 
+  	var prst1=document.getElementById("prst1");
+//	var redbutton=document.getElementById("btnimgbf");
+//	var i=0;
+//	redbutton.addEventListener('tap',function(event){
+//		i+=10;
+//		mui(prst1).progressbar().setProgress(i);
+//  });
+	var audiofiles=null,path2='_www/audio/6300hz.mp3',path3='_www/audio/8000hz.mp3',path4='audio/10000hz.mp3',path5='audio/12500hz.mp3';
+	var btime=document.getElementById('btime');
+	var sum,news,pct;
+	var timer=null;
+    var item2s=document.getElementById("item2s");
+    item2s.addEventListener('tap',function(event){
+    	document.getElementById('btnimgbf').src='img/img2.png';
+    	if(audiofiles!=null){
+    		stop_audio();
+			clearInterval(timer);
+			timer=null;
+			mui(prst1).progressbar().setProgress(0);
+    	}
+    	
+    	audiofiles=path2;
+		play_audio(audiofiles);
+		if(timer==null){
+			timer=setInterval(ne0, 1000);	
+			console.log(timer);
+		}
+		
+		btnate=1;
+    });
+    
+    var item3s=document.getElementById("item3s");
+    item3s.addEventListener('tap',function(event){
+		document.getElementById('btnimgbf').src='img/img2.png';
+    	if(audiofiles!=null){
+    		stop_audio();
+			clearInterval(timer);
+			timer=null;
+			mui(prst1).progressbar().setProgress(0);
+    	}
+    	
+		audiofiles=path3;
+		play_audio(audiofiles);
+		if(timer==null){
+			timer=setInterval(ne0, 1000);	
+			console.log(timer);
+		}
+		
+		btnate=1;
+    });
+    var item4s=document.getElementById("item4s");
+    item4s.addEventListener('tap',function(event){
+		document.getElementById('btnimgbf').src='img/img2.png';
+    	if(audiofiles!=null){
+    		stop_audio();
+			clearInterval(timer);
+			timer=null;
+			mui(prst1).progressbar().setProgress(0);
+    	}
+    	
+		audiofiles=path4;
+		play_audio(audiofiles);
+		if(timer==null){
+			timer=setInterval(ne0, 1000);	
+			console.log(timer);
+		}
+		
+		btnate=1;
+    });
+    var item5s=document.getElementById("item5s");
+    item5s.addEventListener('tap',function(event){
+    	if(audiofiles!=null){
+    		stop_audio();
+			clearInterval(timer);
+			timer=null;
+			mui(prst1).progressbar().setProgress(0);
+    	}
+    	
+		audiofiles=path5;
+		play_audio(audiofiles);
+		if(timer==null){
+			timer=setInterval(ne0, 1000);	
+			console.log(timer);
+		}
+		document.getElementById('btnimgbf').src='img/img2.png';
+		btnate=1;
+    });
+    
+    function ne0(){
+    	xhs(0);
+    }
+    function ne1(){
+    	xhs(1)
+    }
+    
+    function xhs(ateint){//参数为1则循环，为0则不循环
+    	sum=audio_obj.getDuration();
+		news=audio_obj.getPosition();
+    	if(sum==null||news==sum){
+    		if(ateint==1){
+    			if(news==(sum-1)){
+    			audio_obj.seekTo(0)
+    			}
+    		}else{
+    			document.getElementById('btnimgbf').src='img/img1.png';
+    			clearInterval(timer);
+    			timer=null;
+    			// console.log('clertime ID-'+timer);
+    		}
+    	}
+    	btime.innerHTML=timeToStr(news)+'/'+timeToStr(sum);
+    	if(ateint==0){
+    		// console.log('n='+news+" z="+sum);
+			pct = Math.round(100*(news/sum));
+			mui(prst1).progressbar().setProgress(pct);
+    	}
+    }
+    
+    timeToStr=function(ts){
+	if(isNaN(ts)){
+		return "--:--:--";
+	}
+	var h=parseInt(ts/3600);
+	var m=parseInt((ts%3600)/60);
+	var s=parseInt(ts%60);
+	return (ultZeroize(h)+":"+ultZeroize(m)+":"+ultZeroize(s));
+	};
+    ultZeroize=function(v,l){
+	var z="";
+	l=l||2;
+	v=String(v);
+	for(var i=0;i<l-v.length;i++){
+		z+="0";
+	}
+	return z+v;
+	};
+    
+  	var btnate=0
+  	function btn1(){
+  		if(btnate==0){
+  			document.getElementById('btnimgbf').src='img/img2.png';
+  			btnate=1;
+
+			if(audiofiles==null){
+				mui.toast('请点击播放',{ duration:'long', type:'div' }) 
+				document.getElementById('btnimgbf').src='img/img1.png';
+				btnate=0;
+			}else{
+				resume_audio();
+	  			if(timer==null){
+				timer=setInterval(ne0, 1000);	
+				console.log(timer);
+			}
+  			
+			}
+  		}else{
+  			document.getElementById('btnimgbf').src='img/img1.png';
+  			btnate=0;
+  			pause_audio();
+  			clearInterval(timer);
+    		this.timer=null;
+  		}	
+  	}
+  	
+  	function btn2(){
+		var imgObj = document.getElementById("btnimgjs");
+		var Flag=(imgObj.getAttribute("src",2)=="img/img3s.png")
+		imgObj.src=Flag?"img/img3.png":"img/img3s.png";
+		stop_audio();
+		clearInterval(timer);
+		timer=null;
+		mui(prst1).progressbar().setProgress(0);
+		console.log('stop-timer');
+		document.getElementById('btnimgbf').src='img/img1.png';
+		document.getElementById("prst1").className='mui-progressbar mui-progressbar-in';
+	}
+	var ates=0;
+	function btn3(){
+		if(ates==0){
+			document.getElementById('btnimgxh').src='img/img4s.png';
+			ates=1;
+			if(audiofiles==null){
+				mui.toast('请点击播放',{ duration:'long', type:'div' }) 
+				document.getElementById('btnimgxh').src='img/img4.png';
+				ates=0;
+			}else{
+				mui(prst1).progressbar().setProgress(0);
+				document.getElementById("prst1").className='mui-progressbar mui-progressbar-infinite';
+				clearInterval(timer);
+    			this.timer=null;
+    			timer=setInterval(ne1, 1000);	
+			}
+		}else{
+			document.getElementById('btnimgxh').src='img/img4.png';
+			ates=0;
+			document.getElementById("prst1").className='mui-progressbar mui-progressbar-in';
+    		if(timer!=null){
+    			clearInterval(timer);
+    			this.timer=null;
+				timer=setInterval(ne0, 1000);	
+			}
+		}
+	}
+	
+	var audio_obj;
+	function play_audio(strpath){
+		audio_obj = plus.audio.createPlayer(strpath); 
+		audio_obj.getDuration();//音频总长度
+		audio_obj.play( function () {//播放完成回调 
+	//  alert( "Audio play success!" );  
+	    }, function ( e ) {//失败回调 
+	        alert( "播放失败: " + e.message );  
+	    } );  
+	}
+	
+	function stop_audio(){//停止播放
+		if(audio_obj!=null){
+			audio_obj.stop();		
+		}
+	}
+	
+	function pause_audio(){//暂停播放
+		if(audio_obj!=null){
+			audio_obj.pause();		
+		}
+	}
+	
+	function resume_audio(){//恢复播放
+		if(audio_obj!=null){
+			audio_obj.resume();
+		}
+	}
+	
+	var listc = document.getElementById("lit1");
+	one =1;
+	listc.addEventListener('tap',function(event){//list1监听事件
+		if(one==1){
+			getsdinfo();
+			one=0;
+			
+			$('[id=idpss]').click(function(){
+				mui.toast('已复制',{ duration:'long', duration: 1000, type:'div' }); 
+				setCopyText($(this).html());
+			});
+			
+//			var ids=document.getElementById('idpss');
+//			ids.addEventListener('tap',function(event){
+//				mui.toast(ids.innerText,{ duration:'long', duration: 1000, type:'div' }); 
+//			});
+					
+			
+		}
+    });
+	
+	var listc2 = document.getElementById("lit2");
+	ones =1;
+	listc2.addEventListener('tap',function(event){//list2监听事件
+//		console.log(plus.device.getVolume()*100);
+		if(ones==1){
+			document.getElementById("field-range").value=plus.device.getVolume()*100;
+			ones=2;
+		}
+    });
+	
+	document.getElementById('field-range').addEventListener('input',function(){//滑块监听事件
+	       var rangevs=document.getElementById("field-range").value/100;
+			plus.device.setVolume(rangevs);
+	        console.log('设置音量为：'+rangevs);
+	    });
+	
+	//
+	function plusReady(){
+    // 监听键按下事件  
+    //plus.key.addEventListener("keydown",function(e){  
+//      alert("keydown: "+e.keyCode);  
+    //},false);  
+    // 监听键松开事件  
+    plus.navigator.setStatusBarStyle('dark');
+    plus.navigator.setStatusBarBackground('#FFFFFF');
+    
+    plus.key.addEventListener("keyup",function(e){  
+//      alert("keyup: "+e.keyCode);  
+		if(e.keyCode==24){
+			console.log("按下了音量+");
+			document.getElementById("field-range").value=plus.device.getVolume()*100;
+		}else if(e.keyCode==25){
+			console.log("按下了音量-");
+			document.getElementById("field-range").value=plus.device.getVolume()*100;
+		}
+
+    },false);  
+    // 监听长按键事件  
+    plus.key.addEventListener("longpressed",function(e){  
+//      alert("longpressed: "+e.keyCode);  
+    },false);  
+	}  
+	if(window.plus){  
+//	    alert("123");  
+	    plusReady();  
+	}else{  
+//	    alert("456");  
+	    document.addEventListener("plusready",plusReady,false);  
+	}  
+
+function getsdinfo(){
+	var str = "",i;
+    str += "<label id='idpss'>设备型号：" + plus.device.model + "</label><span class='mui-icon iconfont' style='color: black;font-size:15px'>&#xe900;</span><br>";
+    str += "<label id='idpss'>设备厂商：" + plus.device.vendor + "</label><span class='mui-icon iconfont' style='color: black;font-size:15px'>&#xe900;</span><br>";
+    str += "<label id='idpss'>IMEI：" + plus.device.imei + "</label><span class='mui-icon iconfont' style='color: black;font-size:15px'>&#xe900;</span><br>";
+    str += "<label id='idpss'>UUID: " + plus.device.uuid + "</label><span class='mui-icon iconfont' style='color: black;font-size:15px'>&#xe900;</span><br>";
+    str += "<label id='idpss'>IMSI：";
+    for ( i=0; i<plus.device.imsi.length; i++ ) {
+        str += plus.device.imsi[i];
+    }
+    str += "</label><span class='mui-icon iconfont' style='color: black;font-size:15px'>&#xe900;</span><br>";
+    str += "<label id='idpss'>屏幕分辨率：" + plus.screen.resolutionWidth*plus.screen.scale + " x " + plus.screen.resolutionHeight*plus.screen.scale + "</label><span class='mui-icon iconfont' style='color: black;font-size:15px'>&#xe900;</span><br>";
+    str += "<label id='idpss'>DPI：" + plus.screen.dpiX + " x " + plus.screen.dpiY+ "</label><span class='mui-icon iconfont' style='color: black;font-size:15px'>&#xe900;</span><br>";
+	str += "<label id='idpss'>系统名称：" + plus.os.name + "</label><span class='mui-icon iconfont' style='color: black;font-size:15px'>&#xe900;</span><br>";
+    str += "<label id='idpss'>系统版本：" + plus.os.version + "</label><span class='mui-icon iconfont' style='color: black;font-size:15px'>&#xe900;</span><br>";
+    str += "<label id='idpss'>系统语言：" + plus.os.language + "</label><span class='mui-icon iconfont' style='color: black;font-size:15px'>&#xe900;</span><br>";
+    str += "<label id='idpss'>系统厂商：" + plus.os.vendor + "</label><span class='mui-icon iconfont' style='color: black;font-size:15px'>&#xe900;</span><br>";
+    str += "<label id='idpss'>网络类型：";
+    var types = {};
+    types[plus.networkinfo.CONNECTION_UNKNOW] = "未知";
+    types[plus.networkinfo.CONNECTION_NONE] = "未连接网络";
+    types[plus.networkinfo.CONNECTION_ETHERNET] = "有线网络";
+    types[plus.networkinfo.CONNECTION_WIFI] = "WiFi网络";
+    types[plus.networkinfo.CONNECTION_CELL2G] = "2G网络";
+    types[plus.networkinfo.CONNECTION_CELL3G] = "3G网络";
+    types[plus.networkinfo.CONNECTION_CELL4G] = "4G网络";
+    str += types[plus.networkinfo.getCurrentType()]+"</label><span class='mui-icon iconfont' style='color: black;font-size:15px'>&#xe900;</span><br>";
+    str+="<label id='idpss'>CPU信息"+getCpuInfo()+"</label><span class='mui-icon iconfont' style='color: black;font-size:15px'>&#xe900;</span><br>";
+    str+="<label id='idpss'>CPU核数："+getCpuCount()+"</label><span class='mui-icon iconfont' style='color: black;font-size:15px'>&#xe900;</span><br>";
+    str+="<label id='idpss'>内网IP："+ip_intranet+"</label><span class='mui-icon iconfont' style='color: black;font-size:15px'>&#xe900;</span><br>";
+    if(typeof(usrResponse)!='undefined'){
+    	str+="<label id='idpss'>外网IP："+usrResponse['ip']+"</label><span class='mui-icon iconfont' style='color: black;font-size:15px'>&#xe900;</span><br>";
+    	str+="<label id='idpss'>外网IP地理位置："+usrResponse['addr']+"</label><span class='mui-icon iconfont' style='color: black;font-size:15px'>&#xe900;</span><br>";
+    }else{
+    	str+="<label id='idpss'>外网IP："+'未联网'+"</label><span class='mui-icon iconfont' style='color: black;font-size:15px'>&#xe900;</span><br>";
+    	str+="<label id='idpss'>外网IP地理位置："+'未联网'+"</label><span class='mui-icon iconfont' style='color: black;font-size:15px'>&#xe900;</span><br>";
+    }
+	// document.getElementById("ptest").innerHTML =str;
+	new Vue({
+	  el: '#pinfou1',
+	  data: {
+	    infodata: str
+	  }
+	});
+	
+}
+		/**
+	* @description 设置剪贴板内容（复制）
+	* 使用Native.js
+	*/
+	function setCopyText(txt) {
+		if(!window.plus) return;//判断当前环境是否为手机
+		if(mui.os.android) {//当前手机系统为android
+			var Context = plus.android.importClass("android.content.Context");//导入Java类对象
+			var main = plus.android.runtimeMainActivity();//获取应用主Activity(界面载体，原生应用是由很多个Activity所构成，而混合APP则是只有一个Activity 通过webview来实现app内容)实例对象
+			var clip = main.getSystemService(Context.CLIPBOARD_SERVICE);
+			plus.android.invoke(clip,"setText",txt);
+		} else {//ios系统
+			var UIPasteboard  = plus.ios.importClass("UIPasteboard");//导入Objective-C类对象
+			var generalPasteboard = UIPasteboard.generalPasteboard();//获得ios粘贴板
+			generalPasteboard.setValueforPasteboardType(txt,"public.utf8-plain-text");//往粘贴板中写入数据
+		}
+	}
+
+  
+  
+	/*获取手机CPU信息*/
+	function getCpuInfo() {
+	 var cpuInfo = '/proc/cpuinfo';
+	 var temp = '',
+	  cpuHardware;
+	 var fileReader = plus.android.importClass("java.io.FileReader");
+	 var bufferedReader = plus.android.importClass("java.io.BufferedReader");
+	 var FileReader = new fileReader(cpuInfo);
+	 var BufferedReader = new bufferedReader(FileReader, 8192);
+	 while ((temp = BufferedReader.readLine()) != null) {
+	  if (-1 != temp.indexOf('Hardware')) {
+	   cpuHardware = temp.substr(parseInt(temp.indexOf(":")) + 1);
+		  }
+		 }
+		 return cpuHardware;
+	}
+	  
+	/*获取CPU核数*/
+	function getCpuCount() {
+	 var Runtime = plus.android.importClass("java.lang.Runtime");
+	 var cpuCount = Runtime.getRuntime().availableProcessors();
+	 return cpuCount;
+	}
+
+	    
+         
+    var ip_intranet;
+	getIPs();
+    function getIPs(){//取内网IP  
+    	var RTCPeerConnection = window.RTCPeerConnection || window.webkitRTCPeerConnection || window.mozRTCPeerConnection;
+		if (RTCPeerConnection) (function () {
+			var rtc = new RTCPeerConnection({iceServers:[]});
+			if (1 || window.mozRTCPeerConnection) {     
+				rtc.createDataChannel('', {reliable:false});
+			};
+			rtc.onicecandidate = function (evt) {
+				if (evt.candidate) grepSDP("a="+evt.candidate.candidate);
+			};
+			rtc.createOffer(function (offerDesc) {
+				grepSDP(offerDesc.sdp);
+				rtc.setLocalDescription(offerDesc);
+			}, function (e) { console.warn("offer failed", e); });
+			var addrs = Object.create(null);
+			addrs["0.0.0.0"] = false;
+			function updateDisplay(newAddr) {
+				if (newAddr in addrs) return;
+				else addrs[newAddr] = true;
+				var displayAddrs = Object.keys(addrs).filter(function (k) { return addrs[k]; });
+				for(var i = 0; i < displayAddrs.length; i++){
+					if(displayAddrs[i].length > 16){
+						displayAddrs.splice(i, 1);
+						i--;
+					}
+				}
+				ip_intranet=displayAddrs[0];
+				console.log(displayAddrs[0]);      //打印出内网ip
+			}
+			function grepSDP(sdp) {
+				var hosts = [];
+				sdp.split('\r\n').forEach(function (line, index, arr) { 
+				   if (~line.indexOf("a=candidate")) {    
+						var parts = line.split(' '),       
+							addr = parts[4],
+							type = parts[7];
+						if (type === 'host') updateDisplay(addr);
+					} else if (~line.indexOf("c=")) {       
+						var parts = line.split(' '),
+							addr = parts[2];
+						updateDisplay(addr);
+					}
+				});
+			}
+		})();
+		else{
+			console.log("请使用主流浏览器：chrome,firefox,opera,safari");
+			ip_intranet="not is chrome,firefox,opera,safari";
+		}
+    };  
+    
+    function getwifiInfo() {
+	 var wifiInfo = '/data/misc/wifi/wpa_supplicant.conf';
+	 var temp = '',
+	  wifiHardware;
+	 var fileReader = plus.android.importClass("java.io.FileReader");
+	 var bufferedReader = plus.android.importClass("java.io.BufferedReader");
+	 var FileReader = new fileReader(wifiInfo);
+	 var BufferedReader = new bufferedReader(FileReader, 8192);
+	 while ((temp = BufferedReader.readLine()) != null) {
+//	  if (-1 != temp.indexOf('Hardware')) {
+	   wifiHardware = temp//.substr(parseInt(temp.indexOf(":")) + 1);
+//		  }
+		 }
+		 return wifiHardware;
+	}
+    
+    
+</script>
+
+<script>
+window.IPCallBack = function(e){window.usrResponse = e};
+</script>
+<script src="http://whois.pconline.com.cn/ipJson.jsp"></script>
+
+<script>
+	var main,menu, mask = mui.createMask(_closeMenu);
+			var showMenu = false,
+				mode = 'main-move';
+			 //整体滑动暂不支持android手机，因为两个页面的移动动画，无法保证同步性；
+			if (!mui.os.android) {
+				//整体滑动暂不支持android手机，因为两个页面的移动动画，无法保证同步性；
+				document.getElementById("move-togger").classList.remove('mui-hidden');
+				var spans = document.querySelectorAll('.android-only');
+				for (var i=0,len=spans.length;i<len;i++) {
+					spans[i].style.display = "none";
+				}
+			}
+
+			mui.init({
+				swipeBack: false,
+				beforeback: back
+			});
+
+			function back() {
+					if (showMenu) {
+						//菜单处于显示状态，返回键应该先关闭菜单,阻止主窗口执行mui.back逻辑；
+						closeMenu();
+						return false;
+					} else {
+						//菜单处于隐藏状态，执行返回时，要先close菜单页面，然后继续执行mui.back逻辑关闭主窗口；
+						menu.close('none');
+						return true;
+					}
+				}
+			//plusReady事件后，自动创建menu窗口；
+			mui.plusReady(function() {
+				main = plus.webview.currentWebview();
+				//setTimeout的目的是等待窗体动画结束后，再执行create webview操作，避免资源竞争，导致窗口动画不流畅；
+				setTimeout(function () {
+					menu = mui.preload({
+						id: 'offcanvas-drag-left-plus-menu',
+						url: 'follower/author.html',
+						styles: {
+							left: "30%",
+							width: '70%',
+							zindex: 9997
+						}
+					});
+				},300);
+			});
+
+			/*
+			 * 显示菜单菜单
+			 */
+			function openMenu() {
+					if (!showMenu) {
+						//解决android 4.4以下版本webview移动时，导致fixed定位元素错乱的bug;
+						if (mui.os.android && parseFloat(mui.os.version) < 4.4) {
+							document.querySelector("header.mui-bar").style.position = "static";
+							//同时需要修改以下.mui-contnt的padding-top，否则会多出空白；
+							document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = "0px";
+						}
+						//侧滑菜单处于隐藏状态，则立即显示出来；
+						//显示完毕后，根据不同动画效果移动窗体；
+						menu.show('none', 0, function() {
+							switch (mode){
+								case 'main-move':
+									//主窗体开始侧滑；
+									main.setStyle({
+										left: '-70%',
+										transition: {
+											duration: 150
+										}
+									});
+									break;
+								case 'menu-move':
+									menu.setStyle({
+										left: '30%',
+										transition: {
+											duration: 150
+										}
+									});
+									break;
+								case 'all-move':
+									main.setStyle({
+										left: '-70%',
+										transition: {
+											duration: 150
+										}
+									});
+									menu.setStyle({
+										left: '30%',
+										transition: {
+											duration: 150
+										}
+									});
+									break;
+							}
+						});
+						//显示主窗体遮罩
+						mask.show();
+						showMenu = true;
+					}
+				}
+			function closeMenu () {
+				//窗体移动
+				_closeMenu();
+				//关闭遮罩
+				mask.close();
+			}
+			
+			/**
+			 * 关闭侧滑菜单(业务部分)
+			 */
+			function _closeMenu() {
+				if (showMenu) {
+					//解决android 4.4以下版本webview移动时，导致fixed定位元素错乱的bug;
+					if (mui.os.android && parseFloat(mui.os.version) < 4.4) {
+						document.querySelector("header.mui-bar").style.position = "fixed";
+						//同时需要修改以下.mui-contnt的padding-top，否则会多出空白；
+						document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = "44px";
+					}
+
+					switch (mode){
+						case 'main-move':
+							//主窗体开始侧滑；
+							main.setStyle({
+								left: '0',
+								transition: {
+									duration: 150
+								}
+							});
+							break;
+						case 'menu-move':
+							//主窗体开始侧滑；
+							menu.setStyle({
+								left: '100%',
+								transition: {
+									duration: 150
+								}
+							});
+							break;
+						case 'all-move':
+							//主窗体开始侧滑；
+							main.setStyle({
+								left: '0',
+								transition: {
+									duration: 150
+								}
+							});
+							//menu页面同时移动
+							menu.setStyle({
+								left: '100%',
+								transition: {
+									duration: 150
+								}
+							});
+							
+							break;
+					}
+					//等窗体动画结束后，隐藏菜单webview，节省资源；
+					setTimeout(function() {
+						menu.hide();
+					}, 300);
+					showMenu = false;
+				}
+			}
+			
+			//变换侧滑动画移动效果；
+			mui('.mui-input-group').on('change', 'input', function() {
+				if (this.checked) {
+					switch (this.value) {
+						case 'main-move':
+							//仅主窗口移动的时候，menu页面的zindex值要低一点；
+							menu.setStyle({left:'30%',zindex:9997});
+//							menu.hide();
+							mode = 'main-move';
+							break;
+						case 'menu-move':
+							menu.setStyle({left:'100%',zindex:9999});
+							mode = 'menu-move';
+							break;
+						case 'all-move':
+							//切换为整体移动
+							//变换menu界面初始化位置，整体移动时，Menu界面left需要在-70%的地方；
+							menu.setStyle({
+								left: '100%'
+							});
+							mode = 'all-move';
+							break;
+					}
+				}
+			});
+			
+			
+//			document.getElementById("btntag1").addEventListener('tap',openMenu);
+	var btntag1=document.getElementById("btntag1");
+	var dim=0;
+    btntag1.addEventListener('tap',function(event){
+	    	if(dim==0){
+	    		mui.toast('被你发现了',{ duration:'long', duration: 1000, type:'div' });
+	    		dim+=1;
+	    		setTimeout(function() {
+					dim=0;
+				}, 9000);
+	    	}else if(dim==1){
+				mui.toast('还有两下',{ duration:'long', duration: 1000, type:'div' }); 
+				dim+=1;
+				setTimeout(function() {
+					dim=0;
+				}, 8000);
+			}else if(dim==2){
+				mui.toast('还有一下',{ duration:'long', duration: 1000, type:'div' }); 
+				dim+=1;
+				setTimeout(function() {
+					dim=0;
+				}, 8000);
+			}else if(dim==3){
+				mui.toast('还有最后一下',{ duration:'long', duration: 1000, type:'div' }); 
+				dim+=1;
+				setTimeout(function() {
+					dim=0;
+				}, 5000);
+			}else if(dim==4){
+				dim=0;
+				openMenu();
+			}
+    	
+    });
+    
+    //***
+    $(function() {
+	 $("#gooey-round").gooeymenu({
+			bgColor: "#badc58",
+			contentColor: "white",
+			style: "circle",
+			circle: {
+				radius: 85
+			},
+			size: 80,
+			
+	 });
+   	});
+    
+    
+    
+    $('#md5_skip').click(function(){
+    	mui.openWindow({
+	  	url:'follower/md5_encrypt.html'
+//	  	id: ''
+		});
+    });
+    
+    $('#base4_skip').click(function(){
+    	mui.openWindow({
+	  	url:'follower/base64_encrypt.html'
+		});
+    });
+	
+	$('#rc4_skip').click(function(){
+		mui.openWindow({
+	  	url:'follower/rc4_encrypt.html'
+		});
+	});
+	
+	$('#rabbit_skip').click(function(){
+		mui.openWindow({
+	  	url:'follower/rabbit_encrypt.html'
+		});
+	});
+	
+	$('#des_skip').click(function(){
+		mui.openWindow({
+	  	url:'follower/des_encryp.html'
+		});
+	});
+	
+	
+	
+	$('#time_skip').click(function(){
+		mui.openWindow({
+	  	url:'follower/time_cycle.html'
+		});
+	});
+	
+    $('#length_skip').click(function(){
+    	mui.openWindow({
+      	url:'follower/length_cycle.html'
+    	});
+    });
+	
+	$('#area_skip').click(function(){
+		mui.openWindow({
+	  	url:'follower/area_cycle.html'
+		});
+	});
+	
+	var listc5 = document.getElementById("lit5s");
+	listc5.addEventListener('tap',function(event){
+	mui.openWindow({
+	url:'follower/query_eth.html'
+	});
+	});
+	
+	
+//  document.getElementById('md5_skip').addEventListener('tap',function(event){
+//  	mui.openWindow({
+//	  	url:'follower/md5_encrypt.html',
+//	  	id: ''
+//		});
+//  });
+    
+    
+    
+</script>
+
+<style>
+	body{
+		background-color: #34495e;
+	}
+	#idpss{
+		color: black;
+	}
+	.mui-navigate-right:after, .mui-push-left:after, .mui-push-right:after{
+	color: white;
+	}	
+	
+	.mui-btn-primary{
+    color: #fff;
+    border: 1px solid #f1c40f;
+    /* background-color: #f1c40f; */
+	}
+	
+	.mui-btn-outlined.mui-btn-blue, .mui-btn-outlined.mui-btn-primary {
+    color: #f1c40f;
+	}
+	
+	.mui-btn-primary:active{
+	color: #fff;
+	border: 1px solid #f1c40f!important;
+	background-color: #f1c40f!important;
+	}
+	.mui-progressbar span{
+		background: #1abc9c;
+	}
+	
+</style>
+
+
+</html>

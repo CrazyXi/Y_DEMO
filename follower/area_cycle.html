@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>面积转换</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<script src="../js/mui.min.js"></script>
+	</head>
+	<body>
+		<header id="header" class="mui-bar mui-bar-nav" style="background-color: #FFFFFF;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">面积转换</h1>
+		</header>
+		
+		<style>
+			#mui-input-rows{
+				margin-left: 10%;
+				width: 90%;
+				background-color:white;
+				margin: 8px 18px;
+				box-shadow: 1px 1px 1px #7f8c8d;
+				text-align: center;
+				border-radius:25px 25px 25px 25px;
+			}
+			.problem input:c{
+				border-style:solid;
+				border-color: #03a9f4;
+				box-shadow: 1 1 1px #03a9f4;
+			}
+		</style>
+		
+		<div id="time_sg" style="margin-top: 60px;">
+			<div class="mui-input-row" id="mui-input-rows">
+				<label>平方毫米</label>
+				<input type="text" placeholder="" id="sqmm">
+			</div>
+			<div class="mui-input-row" id="mui-input-rows">
+				<label>平方厘米</label>
+				<input type="text" placeholder=""  id="square_centimetre">
+			</div>
+			<div class="mui-input-row" id="mui-input-rows">
+				<label>平方分米</label>
+				<input type="text" placeholder="" id="square_decimetre">
+			</div>
+			<div class="mui-input-row" id="mui-input-rows">
+				<label>平方米</label>
+				<input type="text" placeholder="" id="square_meter">
+			</div>
+			<div class="mui-input-row" id="mui-input-rows">
+				<label>亩</label>
+				<input type="text" placeholder="" id="acre">
+			</div>
+			<div class="mui-input-row" id="mui-input-rows">
+				<label>公顷</label>
+				<input type="text" placeholder="" id="hectare">
+			</div>
+			<div class="mui-input-row" id="mui-input-rows">
+				<label>平方千米</label>
+				<input type="text" placeholder="" id="square_kilometre">
+			</div>
+		</div>
+		
+	</body>
+	<script type="text/javascript" charset="utf-8">
+		mui.init({
+			swipeBack:true //启用右滑关闭功能
+		});
+		
+		var sqmm,square_centimetre,square_decimetre,square_meter,acre,hectare,square_kilometre;
+		
+		document.getElementById("sqmm").addEventListener('input',function(){
+			if(mui('#sqmm')[0].value==''||mui('#sqmm')[0].value==' '){
+				mui('#sqmm')[0].value=0;
+			}
+			sqmm=parseFloat(mui('#sqmm')[0].value);
+			square_centimetre=parseFloat(sqmm)/100;
+			square_decimetre=parseFloat(square_centimetre)/100;
+			square_meter=parseFloat(square_decimetre)/100;
+			acre=parseFloat(square_meter)/666.66666666666667;
+			hectare=parseFloat(square_meter)/10000;
+			square_kilometre=parseFloat(hectare)/100;
+			mui('#sqmm')[0].value=sqmm;
+			mui('#square_centimetre')[0].value=square_centimetre;
+			mui('#square_decimetre')[0].value=square_decimetre;
+			mui('#square_meter')[0].value=square_meter;
+			mui('#acre')[0].value=acre;
+			mui('#hectare')[0].value=hectare;
+			mui('#square_kilometre')[0].value=square_kilometre;
+		});
+		
+		document.getElementById("square_centimetre").addEventListener('input',function(){
+			if(mui('#square_centimetre')[0].value==''||mui('#square_centimetre')[0].value==' '){
+				mui('#square_centimetre')[0].value=0;
+			}
+			sqmm=parseFloat(mui('#square_centimetre')[0].value*100);
+			square_centimetre=parseFloat(sqmm)/100;
+			square_decimetre=parseFloat(square_centimetre)/100;
+			square_meter=parseFloat(square_decimetre)/100;
+			acre=parseFloat(square_meter)/666.66666666666667;
+			hectare=parseFloat(square_meter)/10000;
+			square_kilometre=parseFloat(hectare)/100;
+			mui('#sqmm')[0].value=sqmm;
+			mui('#square_centimetre')[0].value=square_centimetre;
+			mui('#square_decimetre')[0].value=square_decimetre;
+			mui('#square_meter')[0].value=square_meter;
+			mui('#acre')[0].value=acre;
+			mui('#hectare')[0].value=hectare;
+			mui('#square_kilometre')[0].value=square_kilometre;
+		});
+
+		document.getElementById("square_decimetre").addEventListener('input',function(){
+			if(mui('#square_decimetre')[0].value==''||mui('#square_decimetre')[0].value==' '){
+				mui('#square_decimetre')[0].value=0;
+			}
+			square_decimetre=parseFloat(mui('#square_decimetre')[0].value);
+			square_centimetre=parseFloat(square_decimetre)*100;
+			sqmm=parseFloat(square_centimetre)*100;
+			square_meter=parseFloat(square_decimetre)/100;
+			acre=parseFloat(square_meter)/666.66666666666667;
+			hectare=parseFloat(square_meter)/10000;
+			square_kilometre=parseFloat(hectare)/100;
+			mui('#sqmm')[0].value=sqmm;
+			mui('#square_centimetre')[0].value=square_centimetre;
+			mui('#square_decimetre')[0].value=square_decimetre;
+			mui('#square_meter')[0].value=square_meter;
+			mui('#acre')[0].value=acre;
+			mui('#hectare')[0].value=hectare;
+			mui('#square_kilometre')[0].value=square_kilometre;
+		});
+		
+		document.getElementById("square_meter").addEventListener('input',function(){
+			if(mui('#square_meter')[0].value==''||mui('#square_meter')[0].value==' '){
+				mui('#square_meter')[0].value=0;
+			}
+			square_meter=parseFloat(mui('#square_meter')[0].value);
+			square_decimetre=parseFloat(square_meter)*100;
+			square_centimetre=parseFloat(square_decimetre)*100;
+			sqmm=parseFloat(square_centimetre)*100;
+			acre=parseFloat(square_meter)/666.66666666666667;
+			hectare=parseFloat(square_meter)/10000;
+			square_kilometre=parseFloat(hectare)/100;
+			mui('#sqmm')[0].value=sqmm;
+			mui('#square_centimetre')[0].value=square_centimetre;
+			mui('#square_decimetre')[0].value=square_decimetre;
+			mui('#square_meter')[0].value=square_meter;
+			mui('#acre')[0].value=acre;
+			mui('#hectare')[0].value=hectare;
+			mui('#square_kilometre')[0].value=square_kilometre;
+		});
+		
+		document.getElementById("acre").addEventListener('input',function(){
+			if(mui('#acre')[0].value==''||mui('#acre')[0].value==' '){
+				mui('#acre')[0].value=0;
+			}
+			acre=parseFloat(mui('#acre')[0].value);
+			square_meter=parseFloat(acre)*666.66666666666667;;
+			square_decimetre=parseFloat(square_meter)*100;
+			square_centimetre=parseFloat(square_decimetre)*100;
+			sqmm=parseFloat(square_centimetre)*100;
+			acre=parseFloat(square_meter)/666.66666666666667;
+			hectare=parseFloat(square_meter)/10000;
+			square_kilometre=parseFloat(hectare)/100;
+			mui('#sqmm')[0].value=sqmm;
+			mui('#square_centimetre')[0].value=square_centimetre;
+			mui('#square_decimetre')[0].value=square_decimetre;
+			mui('#square_meter')[0].value=square_meter;
+			mui('#acre')[0].value=acre;
+			mui('#hectare')[0].value=hectare;
+			mui('#square_kilometre')[0].value=square_kilometre;
+		});
+		
+		document.getElementById("hectare").addEventListener('input',function(){
+			if(mui('#hectare')[0].value==''||mui('#hectare')[0].value==' '){
+				mui('#hectare')[0].value=0;
+			}
+			hectare=parseFloat(mui('#hectare')[0].value);
+			square_meter=parseFloat(hectare)*10000;
+			square_decimetre=parseFloat(square_meter)*100;
+			square_centimetre=parseFloat(square_decimetre)*100;
+			sqmm=parseFloat(square_centimetre)*100;
+			acre=parseFloat(square_meter)/666.66666666666667;
+			square_kilometre=parseFloat(hectare)/100;
+			mui('#sqmm')[0].value=sqmm;
+			mui('#square_centimetre')[0].value=square_centimetre;
+			mui('#square_decimetre')[0].value=square_decimetre;
+			mui('#square_meter')[0].value=square_meter;
+			mui('#acre')[0].value=acre;
+			mui('#hectare')[0].value=hectare;
+			mui('#square_kilometre')[0].value=square_kilometre;
+		});
+		
+		document.getElementById("square_kilometre").addEventListener('input',function(){
+			if(mui('#square_kilometre')[0].value==''||mui('#square_kilometre')[0].value==' '){
+				mui('#square_kilometre')[0].value=0;
+			}
+			square_kilometre=parseFloat(mui('#square_kilometre')[0].value);
+			hectare=parseFloat(square_kilometre)*100;
+			square_meter=parseFloat(hectare)*10000;
+			square_decimetre=parseFloat(square_meter)*100;
+			square_centimetre=parseFloat(square_decimetre)*100;
+			sqmm=parseFloat(square_centimetre)*100;
+			acre=parseFloat(square_meter)/666.66666666666667;
+			mui('#sqmm')[0].value=sqmm;
+			mui('#square_centimetre')[0].value=square_centimetre;
+			mui('#square_decimetre')[0].value=square_decimetre;
+			mui('#square_meter')[0].value=square_meter;
+			mui('#acre')[0].value=acre;
+			mui('#hectare')[0].value=hectare;
+			mui('#square_kilometre')[0].value=square_kilometre;
+		});
+		
+		
+	</script>
+	
+	
+	
+</html>

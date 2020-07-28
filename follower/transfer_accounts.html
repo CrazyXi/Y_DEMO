@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>ETH 转账</title>
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<script type="text/javascript" src="../js/mui.min.js" ></script>
+		<script src="../js/jquery-2.1.3.min.js"></script>
+	</head>
+	<style>
+		.mui-bar-nav{
+		box-shadow: 0px 0px;
+		border: none;
+		}
+		input[type=range]{ 
+		margin-top: 8px;
+		outline: none; 
+		-webkit-appearance: none;/*清除系统默认样式*/  
+		width:59% !important;  
+		background: -webkit-linear-gradient(#34495e, #34495e) no-repeat, #b2bec3;  
+		background-size: 0% 100%;/*设置左右宽度比例*/  
+		height: 3px;/*横条的高度*/  
+		} 
+		 /*拖动块的样式*/  
+		input[type=range]::-webkit-slider-thumb {  
+		-webkit-appearance: none;/*清除系统默认样式*/  
+		height:20px;/*拖动块高度*/  
+		width: 20px;/*拖动块宽度*/  
+		background: #34495e;/*拖动块背景*/  
+		border-radius: 50%; /*外观设置为圆形*/  
+		border: solid 3px #34495e; /*设置边框*/  
+		} 
+		.gweis{
+			color: #636e72;
+		}
+		
+		
+	</style>
+	
+	<body>
+		<header id="header" class="mui-bar mui-bar-nav" style="background-color: white;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: black;"></a>
+			<h1 class="mui-title">ETH转账</h1>
+		</header>
+		
+		<div id="content" class="mui-content">
+			
+			<div style="background-color: white;height: 70px;padding-top: 10px;margin-top: 1px;">
+				<label style="margin-left: 15px;font-size: 18px;">ETH</label>
+				<label v-cloak id="ethbalance" style="margin-left: 55%;font-size: 12px;color: black;">余额: </label>
+				<input id="ethnum" type="text" oninput="datamonitor();" placeholder="输入数量" style="border: none;"/>
+				 
+			</div>
+			
+			<div style="padding-top: 10px;background-color: white;margin-top: 20px;height: 130px;">
+				<label style="margin-left: 15px;font-size: 18px;">收款地址</label>
+				<input id="ethadr" type="text" oninput="datamonitor();"  placeholder="输入钱包地址" style="border: none;margin-top: 10px;font-size: 15px;margin-bottom: 5px;"/>
+				<div style="width: 100%;height: 1px;background-color: #dfe6e9;"></div>
+				<label style="margin-left: 15px;font-size: 18px;">备注</label>
+				<input type="text" placeholder="(选填)" style="border: none;width: 86%;"/>
+				
+			</div>
+			
+			<div style="margin-top: 20px;background-color: white;height: 210px;padding-top: 10px;">
+				<label style="margin-left: 15px;font-size: 18px;">矿工费用</label>
+				<div style="text-align: right;">
+					<label id="exchange_rate" style="margin-bottom: 10px;margin-right: 15px;font-size: 16px;color:black;">0.000000 ether ≈ ￥0.00</label>
+				</div>
+				
+				
+				<div id="" style="padding-top: 30px;text-align: center;">
+					<span id="tortoise" class="mui-icon iconfont" style="color: #2ecc71;font-size: 20px;">&#xe0ac;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					
+					<input type="range" id='field-range' value="0" min="0" max="10000"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					
+					<span id="rabbit" class="mui-icon iconfont" style="color: #636e72;font-size: 20px;">&#xe0ad;</span>
+					<br>
+					<div style="margin-bottom: 20px;">
+						
+					</div>
+					<label id="gwei" class="gweis" style="">00.00 gwei</label> 
+				</div>
+				
+				<div style="margin-top: 60%;text-align: center;">
+					
+					<button id="sbm" type="button" disabled="disabled" style="height: 55px;width: 80%;border: #badc58 solid 1px;border-radius: 30px;background-color: #badc58;color: white;">下一步</button>
+					
+				</div>
+				
+			</div>	
+			
+		</div>
+		
+		<script>
+			function scanrs(r){
+				$('#ethadr').val('');
+				$('#ethadr').val(r);
+				datamonitor();
+			}
+			
+			// var addr="0xbAB655547670FdB084e78aDc79aaf2cd3130F201";
+			// console.log(addr.length);
+			// console.log(parseInt(addr, 16));
+			
+			function datamonitor(){
+				var ethnum=$('#ethnum').val();
+				var ethadr=$('#ethadr').val();
+				if(ethnum.trim().length>0 && ethnum.trim()!=""){
+					if(ethadr.trim().length>0 && ethnum.trim()!=""){
+						$("#sbm").removeAttr("disabled");
+					}else{
+						$("#sbm").attr("disabled","disabled");
+					}
+				}else{
+					$("#sbm").attr("disabled","disabled");
+				}
+			}
+			
+	var nums=1000000000000000000;// wei 基本单位
+	var ms=1000000000;
+	var m=1e9;//10的9次幂
+	var gwei=5;
+	var gas=21000;
+	var url2="https://api.etherscan.io/api?module=stats&action=ethprice";//ETH最新价格
+	var url3="https://api.exchangerate-api.com/v4/latest/USD";//货币 汇率兑换
+	var cny='0.00';
+	var ethers=0;
+	var gweis=0;
+	mui.getJSON(url2,function(ret){
+		var eth_usd_exchange_rate=ret.result.ethusd;
+		mui.getJSON(url3,function(rets){
+			var eth_cny_exchange_rate=eth_usd_exchange_rate*rets.rates.CNY;
+			cny=parseFloat(eth_cny_exchange_rate).toFixed(2).toString();
+		});
+	});
+	$('#field-range').on("drag", function(e) {
+		var num=$('#field-range').val()/100;
+		gweis=parseFloat(num).toFixed(2);
+		var st=gweis+" gwei";
+		$('#field-range').attr('style', 'background-size: '+num+"%");
+		$('#gwei').html(st);
+		// console.log(gweis);
+		var gasPriceGwei=m*gweis;
+		var gw=gas*gasPriceGwei;
+		var ether=parseFloat(gw/nums).toFixed(6);
+		ethers=parseFloat(gw/nums).toFixed(13);
+		var rmb=parseFloat(ether*cny).toFixed(2);
+		$('#exchange_rate').html(ether+' ether ≈ ￥'+rmb);
+		if(gweis==0){
+			$('#tortoise').attr('style', 'color: #2ecc71;font-size: 20px');
+		}else if(gweis==100){
+			$('#rabbit').attr('style', 'color: #e74c3c;font-size: 20px');
+		}else{
+			$('#tortoise').attr('style', 'color: #636e72;font-size: 20px');
+			$('#rabbit').attr('style', 'color: #636e72;font-size: 20px');
+		}
+	});
+		</script>
+		
+	</body>
+</html>

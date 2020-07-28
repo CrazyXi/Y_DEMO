@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>时间转换</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<script src="../js/mui.min.js"></script>
+	</head>
+	<body>
+		<header id="header" class="mui-bar mui-bar-nav" style="background-color: #FFFFFF;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">时间转换</h1>
+		</header>
+		
+		<style>
+			#mui-input-rows{
+				margin-left: 10%;
+				width: 90%;
+				background-color:white;
+				margin: 8px 18px;
+				box-shadow: 1px 1px 5px #7f8c8d;
+				text-align: center;
+				border-radius:25px 25px 25px 25px;
+			}
+			
+			.problem input:c{
+				border-style:solid;
+				border-color: #03a9f4;
+				box-shadow: 1 1 5px #03a9f4;
+			}
+			
+			
+			
+		</style>
+		
+		
+		
+		<div id="time_sg" style="margin-top: 60px;">
+			<div class="mui-input-row" id="mui-input-rows">
+				<label>纳秒</label>
+				<input type="text" placeholder="" id="nanosecond" v-model="nanosecond">
+			</div>
+			<div class="mui-input-row" id="mui-input-rows">
+				<label>微秒</label>
+				<input type="text" placeholder=""  id="microsecond" v-model="microsecond">
+			</div>
+			<div class="mui-input-row" id="mui-input-rows">
+				<label>毫秒</label>
+				<input type="text" placeholder="" id="millisecond" v-model="millisecond">
+			</div>
+			<div class="mui-input-row" id="mui-input-rows">
+				<label>秒</label>
+				<input type="text" placeholder="" id="second" v-model="second">
+			</div>
+			<div class="mui-input-row" id="mui-input-rows">
+				<label>分</label>
+				<input type="text" placeholder="" id="minute" v-model="minute">
+			</div>
+			<div class="mui-input-row" id="mui-input-rows">
+				<label>时</label>
+				<input type="text" placeholder="" id="hour" v-model="hour">
+			</div>
+			<div class="mui-input-row" id="mui-input-rows">
+				<label>天</label>
+				<input type="text" placeholder="" id="day" v-model="day">
+			</div>
+			<div class="mui-input-row" id="mui-input-rows">
+				<label>周</label>
+				<input type="text" placeholder="" id="week" v-model="week">
+			</div>
+			<div class="mui-input-row" id="mui-input-rows">
+				<label>年</label>
+				<input type="text" placeholder="" id="year" v-model="year">
+			</div>
+			
+		</div>
+		
+	</body>
+	<script type="text/javascript" src="../js/vue.min.js" ></script>
+	<script type="text/javascript" charset="utf-8">
+		mui.init({
+			swipeBack:true //启用右滑关闭功能
+		});
+		
+		var vm = new Vue({
+			el: '#time_sg',
+			data: {
+			   nanosecond :0,
+			   microsecond:0,
+			   millisecond:0,
+			   second:0,
+			   minute:0,
+			   hour:0,
+			   day:0,
+			   week:0,
+			   year:0
+			},
+			watch : {
+			   nanosecond:function(val) {//纳秒
+				  this.nanosecond = val;
+				  this.microsecond = this.nanosecond / 1000
+				  this.millisecond = this.microsecond / 1000
+				  this.second = this.millisecond / 1000
+				  this.minute = this.second / 60
+				  this.hour = this.minute / 60
+				  this.day = this.hour / 24
+				  this.week = this.day / 7
+				  this.year = this.week / 52.1428523
+				  
+				  
+			   },
+			   microsecond:function (val) {//微秒
+			      this.microsecond = val;
+				  this.nanosecond = this.microsecond * 1000
+				  this.millisecond = this.microsecond / 1000
+				  this.second = this.millisecond / 1000
+				  this.minute = this.second / 60
+				  this.hour = this.minute / 60
+				  this.day = this.hour / 24
+				  this.week = this.day / 7
+				  this.year = this.week / 52.1428523
+				  
+			   },
+			   millisecond:function (val) {//毫秒
+				  this.millisecond = val;
+				  this.microsecond = this.millisecond * 1000
+				  this.millisecond = this.microsecond / 1000
+				  this.second = this.millisecond / 1000
+				  this.minute = this.second / 60
+				  this.hour = this.minute / 60
+				  this.day = this.hour / 24
+				  this.week = this.day / 7
+				  this.year = this.week / 52.1428523
+				  
+			   },
+			   second:function (val) {//秒
+			      this.second = val;
+				  this.millisecond = this.second * 1000
+				  this.microsecond = this.nanosecond / 1000
+				  this.minute = this.second / 60
+				  this.hour = this.minute / 60
+				  this.day = this.hour / 24
+				  this.week = this.day / 7
+				  this.year = this.week / 52.1428523
+				  
+			   },
+			   minute:function (val) {//分
+			      this.minute = val;
+				  this.second = this.minute * 60
+				  this.microsecond = this.nanosecond / 1000
+				  this.millisecond = this.microsecond / 1000
+				  this.hour = this.minute / 60
+				  this.day = this.hour / 24
+				  this.week = this.day / 7
+				  this.year = this.week / 52.1428523
+				  
+			   },
+			   hour:function (val) {//时
+				  this.hour = val;
+				  this.minute = this.hour * 60
+				  this.microsecond = this.nanosecond / 1000
+				  this.millisecond = this.microsecond / 1000
+				  this.second = this.millisecond / 1000
+				  this.day = this.hour / 24
+				  this.week = this.day / 7
+				  this.year = this.week / 52.1428523
+				  
+			   },
+			   day:function (val) {//天
+			   	  this.day = val;
+				  this.hour = this.day * 24
+			   	  this.microsecond = this.nanosecond / 1000
+			   	  this.millisecond = this.microsecond / 1000
+			   	  this.second = this.millisecond / 1000
+			   	  this.minute = this.second / 60
+			   	  this.week = this.day / 7
+			   	  this.year = this.week / 52.1428523
+				  
+			   },
+			   week:function (val) {//周
+			   	  this.week = val;
+				  this.day = this.week * 7
+			   	  this.microsecond = this.nanosecond / 1000
+			   	  this.millisecond = this.microsecond / 1000
+			   	  this.second = this.millisecond / 1000
+			   	  this.minute = this.second / 60
+			   	  this.hour = this.minute / 60
+			   	  // this.day = this.hour / 24
+			   	  this.year = this.week / 52.1428523
+				  
+			   },
+			   year:function (val) {//年
+			   	  this.year = val;
+				  this.week = this.year * 52.1428523
+				  // this.week = this.day / 7
+				  this.day = this.hour / 24
+				  this.hour = this.minute / 60
+				  this.minute = this.second / 60
+				  this.second = this.millisecond / 1000
+				  this.millisecond = this.microsecond / 1000
+			   	  this.microsecond = this.nanosecond / 1000
+			   	  
+			   }
+			}
+		});
+		
+		
+		
+		
+	</script>
+	
+	
+	
+</html>
